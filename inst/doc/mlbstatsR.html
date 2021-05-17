@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>mlbstatsR</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">mlbstatsR</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbstatsR)</span></code></pre></div>
+<p><strong>mlbstatsR</strong> es un package que tiene como objetivo facilitar las estadisticas, fotos de los jugadores, los logos y los colores de los equipos de la liga profesional de Baseball MLB, para visualizaciones y graficas</p>
+<div id="que-contiene-el-package" class="section level2">
+<h2>Que contiene el package</h2>
+<p>El package contiene las siguientes funciones:</p>
+<ul>
+<li><p>get_mlb_teams()</p></li>
+<li><p>get_mlb_players()</p></li>
+<li><p>get_png_logos()</p></li>
+<li><p>get_mlb_bateo()</p></li>
+<li><p>get_mlb_pitcheo()</p></li>
+<li><p>mlb_team_stats()</p></li>
+<li><p>get_reference_players_mlb()</p></li>
+<li><p>get_reference_team_mlb()</p></li>
+<li><p>espn_player_stats()</p></li>
+<li><p>espn_team_stats()</p></li>
+<li><p>mlb_player_full()</p></li>
+</ul>
+</div>
+<div id="algunos-ejemplos" class="section level2">
+<h2>Algunos Ejemplos</h2>
+<div id="get_reference_players_mlb" class="section level3">
+<h3>get_reference_players_mlb()</h3>
+<p>Descarga de la página <strong><em>baseball-reference</em></strong> desde el año <strong>1876</strong> las estadsiticas de los jugadores en <strong><em>Batting Pitching</em></strong> y <strong><em>Fielding</em></strong>.</p>
+<p>En <strong><em>Batting</em></strong> podemos seleccionar <strong><em>standard</em>, <em>advanced, value, probability, ratio, baserunning, pitchesbatting, neutralizedbatting, situational, baserunning, cumulative .</em></strong> Como por ejemplo :</p>
+<p><strong><em>get_reference_players_mlb(1945, “batting”, “value”)</em></strong></p>
+<pre><code>#&gt; LOADING 1945 batting value from the index:
+#&gt; &#39;advanced&#39;, &#39;value&#39;, &#39;probability&#39;, &#39;ratio&#39;, &#39;baserunning&#39;, &#39;standard&#39;
+#&gt; &#39;pitchesbatting&#39;, &#39;neutralizedbatting&#39;,&#39;situational&#39;, &#39;baserunning&#39; o &#39;cumulative&#39;
+#&gt; # A tibble: 547 x 27
+#&gt;     year stats stats_type rk    name  age   tm    g     pa    rbat  rbaser rdp  
+#&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;
+#&gt;  1  1945 batt… value      1     Ace … 35    NYG   65    20    -2    0      0    
+#&gt;  2  1945 batt… value      2     Bust… 30    2TM   154   707   15    0      1    
+#&gt;  3  1945 batt… value      3     Morr… 29    2TM   70    174   -1    -1     1    
+#&gt;  4  1945 batt… value      4     Nate… 31    BSN   22    53    -5    0      0    
+#&gt;  5  1945 batt… value      5     Stan… 28    2TM   34    89    -4    1      0    
+#&gt;  6  1945 batt… value      6     John… 29    2TM   127   540   -16   -2     -1   
+#&gt;  7  1945 batt… value      7     Pete… 41    2TM   8     5     0     0      0    
+#&gt;  8  1945 batt… value      8     Luke… 38    CHW   18    70    7     0      0    
+#&gt;  9  1945 batt… value      9     Joe … 22    PHA   10    18    -3    0      0    
+#&gt; 10  1945 batt… value      10    Jim … 28    CLE   25    61    -1    0      0    
+#&gt; # … with 537 more rows, and 15 more variables: rfield &lt;chr&gt;, rpos &lt;chr&gt;,
+#&gt; #   raa &lt;chr&gt;, waa &lt;chr&gt;, rrep &lt;chr&gt;, rar &lt;chr&gt;, war &lt;chr&gt;,
+#&gt; #   waa_wl_percent &lt;chr&gt;, x162wl_percent &lt;chr&gt;, o_war &lt;chr&gt;, d_war &lt;chr&gt;,
+#&gt; #   o_rar &lt;chr&gt;, salary &lt;chr&gt;, acquired &lt;chr&gt;, pos_summary &lt;chr&gt;</code></pre>
+<p>En <strong><em>Pitching</em></strong> podemos seleccionar <strong><em>advanced, value, probability, ratio, battingagainst, startingpitching, standard, reliefpitching, neutralizedpitching, baserunning o cumulative.</em></strong> Como por ejemplo :</p>
+<p><strong><em>get_reference_players_mlb(1965, “pitching”, “ratio”)</em></strong></p>
+<pre><code>#&gt; LOADING 1965 pitching ratio from the index:
+#&gt; &#39;advanced&#39;, &#39;value&#39;, &#39;probability&#39;, &#39;ratio&#39;, &#39;battingagainst&#39;, &#39;startingpitching&#39;,
+#&gt; &#39;standard&#39;, &#39;reliefpitching&#39;, &#39;neutralizedpitching&#39;, &#39;baserunning&#39; o &#39;cumulative&#39;
+#&gt; # A tibble: 341 x 25
+#&gt;     year stats  stats_type rk    name   age   tm    ip    ptn_percent hr_percent
+#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;     
+#&gt;  1  1965 pitch… ratio      1     Ted A… 32    CHC   136.1 57%         1.2%      
+#&gt;  2  1965 pitch… ratio      2     Hank … 34    DET   208.1 19%         2.7%      
+#&gt;  3  1965 pitch… ratio      3     Jack … 24    KCA   51.1  59%         1.4%      
+#&gt;  4  1965 pitch… ratio      4     Matty… 26    SFG   2.0   30%         0.0%      
+#&gt;  5  1965 pitch… ratio      5     Don A… 22    HOU   6.0   35%         0.0%      
+#&gt;  6  1965 pitch… ratio      6     Gerry… 24    CIN   54.0  27%         1.5%      
+#&gt;  7  1965 pitch… ratio      7     Denni… 24    STL   7.1   58%         0.0%      
+#&gt;  8  1965 pitch… ratio      8     Jack … 28    PHI   99.0  61%         0.9%      
+#&gt;  9  1965 pitch… ratio      9     Steve… 27    BAL   220.2 20%         1.8%      
+#&gt; 10  1965 pitch… ratio      10    Ed Ba… 21    BAL   4.1   82%         0.0%      
+#&gt; # … with 331 more rows, and 15 more variables: so_percent &lt;chr&gt;,
+#&gt; #   bb_percent &lt;chr&gt;, so_bb_percent &lt;chr&gt;, xbh_percent &lt;chr&gt;,
+#&gt; #   x_h_percent &lt;chr&gt;, gb_fb &lt;chr&gt;, go_ao &lt;chr&gt;, ip_percent &lt;chr&gt;,
+#&gt; #   ld_percent &lt;chr&gt;, hr_fb &lt;chr&gt;, if_fb &lt;chr&gt;, opp &lt;chr&gt;, dp &lt;chr&gt;,
+#&gt; #   percent &lt;chr&gt;, p_au &lt;chr&gt;</code></pre>
+<p>En <strong><em>Fielding</em></strong> podemos seleccionar <strong><em>appearances, pitcher, catcher, firstbase, secondbase, thirdbase, shortstop, leftfield, centerfield, rightfield, outfield.</em></strong> Como por ejemplo :</p>
+<p><strong><em>get_reference_players_mlb(2002, “fielding”, “appearances”)</em></strong></p>
+<pre><code>#&gt; LOADING 2002 fielding appearances from the index:
+#&gt; &#39;appearances&#39;, &#39;pitcher&#39;, &#39;catcher&#39;, &#39;firstbase&#39;, &#39;secondbase&#39;, &#39;thirdbase&#39;,
+#&gt; &#39;shortstop&#39;, &#39;leftfield&#39;, &#39;centerfield&#39;, &#39;rightfield&#39;, &#39;outfield&#39;
+#&gt; # A tibble: 1,218 x 25
+#&gt;     year stats  stats_type  rk    name     age   tm    yrs   g     gs    batting
+#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  
+#&gt;  1  2002 field… appearances 1     Paul Ab… 34    SEA   9     7     5     0      
+#&gt;  2  2002 field… appearances 2     Brent A… 24    TBD   2     117   115   117    
+#&gt;  3  2002 field… appearances 3     Bobby A… 28    PHI   7     157   153   157    
+#&gt;  4  2002 field… appearances 4     Jose Ac… 24    CIN   2     6     5     6      
+#&gt;  5  2002 field… appearances 5     Juan Ac… 32    DET   7     65    0     4      
+#&gt;  6  2002 field… appearances 6     Terry A… 29    PHI   8     46    19    45     
+#&gt;  7  2002 field… appearances 7     Jeremy … 23    KCR   1st   34    7     0      
+#&gt;  8  2002 field… appearances 8     Benny A… 30    2TM   5     61    41    61     
+#&gt;  9  2002 field… appearances 9     Kurt Ai… 23    SFG   2     6     4     6      
+#&gt; 10  2002 field… appearances 10    Israel … 29    MIL   3     16    6     16     
+#&gt; # … with 1,208 more rows, and 14 more variables: defense &lt;chr&gt;, p &lt;chr&gt;,
+#&gt; #   c &lt;chr&gt;, x1b &lt;chr&gt;, x2b &lt;chr&gt;, x3b &lt;chr&gt;, ss &lt;chr&gt;, lf &lt;chr&gt;, cf &lt;chr&gt;,
+#&gt; #   rf &lt;chr&gt;, of &lt;chr&gt;, dh &lt;chr&gt;, ph &lt;chr&gt;, pr &lt;chr&gt;</code></pre>
+</div>
+<div id="get_reference_team_mlb" class="section level3">
+<h3>get_reference_team_mlb()</h3>
+<p>Descarga de la página <strong><em>baseball-reference</em></strong> desde el año <strong>1876</strong> las estadisticas de los equipos en <strong><em>Batting Pitching</em></strong> y <strong><em>Fielding</em></strong>.</p>
+<p>En <strong><em>Batting</em></strong> podemos seleccionar <strong><em>standard, advanced, value, probability, ratio, baserunning, pitchesbatting, neutralizedbatting, situational.</em></strong> Como por ejemplo :</p>
+<p><strong><em>get_reference_team_mlb(2021,“batting”, “advanced”)</em></strong></p>
+<pre><code>#&gt; LOADING 2021 batting advanced from the index:
+#&gt; &#39;advanced&#39;, &#39;value&#39;, &#39;probability&#39;, &#39;ratio&#39;, &#39;baserunning&#39;,
+#&gt; &#39;standard&#39;, &#39;pitchesbatting&#39;, &#39;situational&#39; o &#39;baserunning&#39;
+#&gt; # A tibble: 33 x 26
+#&gt;     year stats stats_type tm    r_g   outs  rc    rc_g  air   b_abip ba    lg_ba
+#&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;
+#&gt;  1  2021 batt… advanced   ARI   4.76  1036  187   4.8   98    .285   .238  .243 
+#&gt;  2  2021 batt… advanced   ATL   4.51  973   171   4.6   105   .265   .227  .252 
+#&gt;  3  2021 batt… advanced   BAL   3.73  984   142   3.8   91    .277   .228  .236 
+#&gt;  4  2021 batt… advanced   BOS   5.10  1024  197   5.1   94    .312   .261  .240 
+#&gt;  5  2021 batt… advanced   CHC   4.44  953   161   4.4   93    .285   .227  .236 
+#&gt;  6  2021 batt… advanced   CHW   5.43  905   176   5.1   90    .326   .261  .235 
+#&gt;  7  2021 batt… advanced   CIN   5.31  946   178   5.0   107   .298   .250  .254 
+#&gt;  8  2021 batt… advanced   CLE   4.14  936   131   3.7   94    .241   .208  .240 
+#&gt;  9  2021 batt… advanced   COL   4.71  984   171   4.6   106   .296   .246  .254 
+#&gt; 10  2021 batt… advanced   DET   3.43  961   127   3.5   90    .293   .220  .235 
+#&gt; # … with 23 more rows, and 14 more variables: obp &lt;chr&gt;, lg_obp &lt;chr&gt;,
+#&gt; #   slg &lt;chr&gt;, lg_slg &lt;chr&gt;, ops &lt;chr&gt;, lg_ops &lt;chr&gt;, ops_2 &lt;chr&gt;,
+#&gt; #   o_wn_percent &lt;chr&gt;, bt_runs &lt;chr&gt;, bt_wins &lt;chr&gt;, tot_a &lt;chr&gt;, sec_a &lt;chr&gt;,
+#&gt; #   iso &lt;chr&gt;, pwr_spd &lt;chr&gt;</code></pre>
+<p>En <strong><em>Pitching</em></strong> podemos seleccionar <strong><em>standard, batting, value, probability, ratio, battingagainst, startingpitching, reliefpitching, basesituation.</em></strong> Como por ejemplo:</p>
+<p><strong><em>get_reference_team_mlb(1980, “pitching”, “battingagainst”)</em></strong></p>
+<pre><code>#&gt; LOADING 1980 pitching battingagainst from the index:
+#&gt; &#39;batting&#39;, &#39;value&#39;, &#39;probability&#39;, &#39;ratio&#39;, &#39;battingagainst&#39;, &#39;startingpitching&#39;,
+#&gt; &#39;reliefpitching&#39;,  &#39;basesituation&#39;, &#39;standard&#39;
+#&gt; # A tibble: 29 x 30
+#&gt;     year stats  stats_type tm    ra_g  p_au  g     pa    ab    r     h     x2b  
+#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+#&gt;  1  1980 pitch… batting    ATL   4.10  &quot;&quot;    161   6028  5423  660   1397  232  
+#&gt;  2  1980 pitch… batting    BAL   3.95  &quot;&quot;    162   6131  5510  640   1438  241  
+#&gt;  3  1980 pitch… batting    BOS   4.79  &quot;&quot;    160   6192  5571  767   1557  287  
+#&gt;  4  1980 pitch… batting    CAL   4.98  &quot;&quot;    160   6256  5563  797   1548  271  
+#&gt;  5  1980 pitch… batting    CHC   4.49  &quot;&quot;    162   6402  5613  728   1525  263  
+#&gt;  6  1980 pitch… batting    CHW   4.46  &quot;&quot;    162   6199  5448  722   1434  217  
+#&gt;  7  1980 pitch… batting    CIN   4.11  &quot;&quot;    163   6143  5511  670   1404  246  
+#&gt;  8  1980 pitch… batting    CLE   5.04  &quot;&quot;    160   6221  5531  807   1519  230  
+#&gt;  9  1980 pitch… batting    DET   4.64  &quot;&quot;    163   6335  5630  757   1505  252  
+#&gt; 10  1980 pitch… batting    HOU   3.61  &quot;&quot;    163   6160  5562  589   1367  203  
+#&gt; # … with 19 more rows, and 18 more variables: x3b &lt;chr&gt;, hr &lt;chr&gt;, sb &lt;chr&gt;,
+#&gt; #   cs &lt;chr&gt;, bb &lt;chr&gt;, so &lt;chr&gt;, ba &lt;chr&gt;, obp &lt;chr&gt;, slg &lt;chr&gt;, ops &lt;chr&gt;,
+#&gt; #   b_abip &lt;chr&gt;, tb &lt;chr&gt;, gdp &lt;chr&gt;, hbp &lt;chr&gt;, sh &lt;chr&gt;, sf &lt;chr&gt;,
+#&gt; #   ibb &lt;chr&gt;, roe &lt;chr&gt;</code></pre>
+<p>En <strong><em>Fielding</em></strong> podemos seleccionar <strong><em>standard, appearances, pitcher, catcher, firstbase, secondbase, thirdbase, shortstop, leftfield, centerfield, rightfield, outfield.</em></strong> Ejemplo:</p>
+<p><strong><em>get_reference_team_mlb(1980, “fielding”, “centerfield”)</em></strong></p>
+<pre><code>#&gt; LOADING 1980 fielding centerfield from the index:
+#&gt; &#39;appearances&#39;, &#39;pitcher&#39;, &#39;catcher&#39;, &#39;firstbase&#39;, &#39;secondbase&#39;, &#39;thirdbase&#39;,
+#&gt;          &#39;shortstop&#39;, &#39;leftfield&#39;, &#39;centerfield&#39;, &#39;rightfield&#39;, &#39;outfield&#39;
+#&gt; # A tibble: 29 x 20
+#&gt;     year stats  stats_type  tm    number_fld ra_g  g     gs    cg    inn   ch   
+#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+#&gt;  1  1980 field… specialpos… ATL   5          4.10  161   161   150   1428… 412  
+#&gt;  2  1980 field… specialpos… BAL   2          3.95  162   162   154   1460… 524  
+#&gt;  3  1980 field… specialpos… BOS   7          4.79  160   160   146   1441… 457  
+#&gt;  4  1980 field… specialpos… CAL   4          4.98  160   160   134   1428… 504  
+#&gt;  5  1980 field… specialpos… CHC   6          4.49  162   162   129   1479… 424  
+#&gt;  6  1980 field… specialpos… CHW   5          4.46  162   162   149   1435… 450  
+#&gt;  7  1980 field… specialpos… CIN   6          4.11  163   163   74    1459… 474  
+#&gt;  8  1980 field… specialpos… CLE   6          5.04  160   160   143   1428… 466  
+#&gt;  9  1980 field… specialpos… DET   5          4.64  163   163   139   1467… 483  
+#&gt; 10  1980 field… specialpos… HOU   5          3.61  163   163   148   1482… 446  
+#&gt; # … with 19 more rows, and 9 more variables: po &lt;chr&gt;, a &lt;chr&gt;, e &lt;chr&gt;,
+#&gt; #   dp &lt;chr&gt;, fld_percent &lt;chr&gt;, rtot &lt;chr&gt;, rtot_yr &lt;chr&gt;, rtz &lt;chr&gt;,
+#&gt; #   rof &lt;chr&gt;</code></pre>
+</div>
+<div id="espn_player_stats" class="section level3">
+<h3>espn_player_stats()</h3>
+<p>Descarga de la pagina de <strong>ESPN</strong> las estadisticas de los jugadores de la <strong>MLB</strong> desde el año 2002. Podemos seleccionar <strong><em>Regular</em></strong> o <strong><em>Playoffs</em></strong> y las estadisticas de <strong><em>batting, pitching</em></strong> y <strong><em>fielding.</em></strong></p>
+<div id="regular" class="section level4">
+<h4>Regular</h4>
+<p><strong><em>espn_player_stats(2015, “pitching”, “regular”)</em></strong></p>
+<pre><code>#&gt; Getting pitching stats de la regular season del 2015!
+#&gt; # A tibble: 78 x 23
+#&gt;     year season_type  rank name           team  pos   games_played games_started
+#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;         &lt;int&gt;
+#&gt;  1  2015 regular         1 Zack Greinke   LAD   SP              32            32
+#&gt;  2  2015 regular         2 Jake Arrieta   CHC   SP              33            33
+#&gt;  3  2015 regular         3 Clayton Kersh… LAD   SP              33            33
+#&gt;  4  2015 regular         4 David Price    DET   SP              32            32
+#&gt;  5  2015 regular         5 Dallas Keuchel HOU   SP              33            33
+#&gt;  6  2015 regular         6 Jacob deGrom   NYM   SP              30            30
+#&gt;  7  2015 regular         7 Gerrit Cole    PIT   SP              32            32
+#&gt;  8  2015 regular         8 Matt Harvey    NYM   SP              29            29
+#&gt;  9  2015 regular         9 Sonny Gray     OAK   SP              31            31
+#&gt; 10  2015 regular        10 John Lackey    STL   SP              33            33
+#&gt; # … with 68 more rows, and 15 more variables: quality_starts &lt;int&gt;,
+#&gt; #   earned_run_avg &lt;dbl&gt;, wins &lt;int&gt;, losses &lt;int&gt;, saves &lt;int&gt;, holds &lt;int&gt;,
+#&gt; #   innings_pitched &lt;dbl&gt;, hits &lt;int&gt;, earned_runs &lt;int&gt;, home_runs &lt;int&gt;,
+#&gt; #   walks &lt;int&gt;, strikeouts &lt;int&gt;, strikes_x_9_i &lt;dbl&gt;, war &lt;dbl&gt;, whip &lt;dbl&gt;</code></pre>
+</div>
+<div id="playoffs" class="section level4">
+<h4>Playoffs</h4>
+<p><strong><em>espn_player_stats(2004, “batting”, “playoffs”)</em></strong></p>
+<pre><code>#&gt; Getting batting stats de los playoffs del 2004!
+#&gt; # A tibble: 61 x 23
+#&gt;     year season_type  rank name     team  pos   games_played at_bats  runs  hits
+#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;
+#&gt;  1  2004 playoffs        1 Andruw … ATL   LF               5      19     4    10
+#&gt;  2  2004 playoffs        2 Darin E… ANA   LF               3      10     2     5
+#&gt;  3  2004 playoffs        3 Michael… MIN   LF               4      15     1     7
+#&gt;  4  2004 playoffs        4 Carlos … HOU   OF              12      46    21    20
+#&gt;  5  2004 playoffs        5 Albert … STL   1B              15      58    15    24
+#&gt;  6  2004 playoffs        6 Hideki … NYY   LF              11      51    12    21
+#&gt;  7  2004 playoffs        7 David O… BOS   DH              14      55    13    22
+#&gt;  8  2004 playoffs        8 Rafael … ATL   2B               5      21     5     8
+#&gt;  9  2004 playoffs        9 Troy Gl… ANA   1B               3      11     3     4
+#&gt; 10  2004 playoffs       10 Torii H… MIN   RF               4      17     5     6
+#&gt; # … with 51 more rows, and 13 more variables: batting_avg &lt;dbl&gt;, doubles &lt;int&gt;,
+#&gt; #   triples &lt;int&gt;, home_runs &lt;int&gt;, runs_batted_in &lt;int&gt;, total_bases &lt;int&gt;,
+#&gt; #   walks &lt;int&gt;, strikeouts &lt;int&gt;, stolen_bases &lt;int&gt;, on_base_pct &lt;dbl&gt;,
+#&gt; #   slugging_pct &lt;dbl&gt;, opb_slg_pct &lt;dbl&gt;, war &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div id="espn_team_stats" class="section level3">
+<h3>espn_team_stats()</h3>
+<p>Descarga de la pagina de <strong>ESPN</strong> las estadisticas de los equipos de la <strong>MLB</strong> desde el año 2002. Podemos seleccionar <strong><em>Regular</em></strong> o <strong><em>Playoffs</em></strong> y las estadisticas de <strong><em>batting, pitching</em></strong> y <strong><em>fielding.</em></strong></p>
+<div id="regular-1" class="section level4">
+<h4>Regular</h4>
+<p><strong><em>espn_team_stats(2021, “fielding”, “regular”)</em></strong></p>
+<pre><code>#&gt; Getting fielding stats de la regular season del 2021!
+#&gt; # A tibble: 30 x 10
+#&gt;     year season_type  rank team   g_played errors fielding_percen… total_chances
+#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt; &lt;chr&gt;        
+#&gt;  1  2021 regular         1 San F…       37     11            0.992 1,331        
+#&gt;  2  2021 regular         2 Houst…       38     14            0.989 1,333        
+#&gt;  3  2021 regular         3 Tampa…       39     14            0.989 1,319        
+#&gt;  4  2021 regular         4 Phila…       38     15            0.989 1,340        
+#&gt;  5  2021 regular         5 Toron…       36     18            0.986 1,289        
+#&gt;  6  2021 regular         6 Atlan…       37     19            0.986 1,323        
+#&gt;  7  2021 regular         7 Chica…       36     19            0.986 1,317        
+#&gt;  8  2021 regular         8 Minne…       35     18            0.985 1,235        
+#&gt;  9  2021 regular         9 Milwa…       38     20            0.985 1,335        
+#&gt; 10  2021 regular        10 St. L…       38     21            0.984 1,337        
+#&gt; # … with 20 more rows, and 2 more variables: putouts &lt;chr&gt;, assists &lt;int&gt;</code></pre>
+</div>
+<div id="playoffs-1" class="section level4">
+<h4>Playoffs</h4>
+<p><strong><em>espn_team_stats(2011, “fielding”, “playoffs”)</em></strong></p>
+<pre><code>#&gt; Getting fielding stats de los playoffs del 2011!
+#&gt; # A tibble: 8 x 10
+#&gt;    year season_type  rank team    g_played errors fielding_percen… total_chances
+#&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;      &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;         &lt;int&gt;
+#&gt; 1  2011 playoffs        1 Tampa …        4      0            0               143
+#&gt; 2  2011 playoffs        2 New Yo…        5      1            0.995           194
+#&gt; 3  2011 playoffs        3 Arizon…        5      1            0.994           164
+#&gt; 4  2011 playoffs        4 Detroi…       11      5            0.988           401
+#&gt; 5  2011 playoffs        5 St. Lo…       18     10            0.985           685
+#&gt; 6  2011 playoffs        6 Philad…        5      3            0.984           190
+#&gt; 7  2011 playoffs        7 Texas …       17     12            0.981           646
+#&gt; 8  2011 playoffs        8 Milwau…       11     12            0.971           408
+#&gt; # … with 2 more variables: putouts &lt;int&gt;, assists &lt;int&gt;</code></pre>
+<p>Espero que sea util</p>
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

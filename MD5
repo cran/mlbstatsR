@@ -1,4 +1,4 @@
-dcdc9a872fcdfcf2610c3c66784fe88e *DESCRIPTION
+906671a7ccf34dc9b52a145fbc0eb8d0 *DESCRIPTION
 c6f982f82b95cd9b4c27b06866b3e365 *NAMESPACE
 bc763825ad8bec0431b0667150f0a3b3 *R/espn_player_stats.R
 93640747560412d83bc41b910825110b *R/espn_team_stats.R
@@ -6,15 +6,15 @@ bc763825ad8bec0431b0667150f0a3b3 *R/espn_player_stats.R
 fe8e27b4001618d44e682dad9063ee0b *R/get_mlb_pitcheo.R
 21910094ec44ae829196eebc8dd6fb03 *R/get_mlb_players.R
 417d27cfb074cad32e15b76d75f22dd7 *R/get_mlb_teams.R
-c494351b031af7e0ffef4968c920f36b *R/get_png_logos.R
-6763c4e979466f185e82bffedefb247e *R/get_reference_players_mlb.R
+638eeb7557d334b06aa9c653ae03374a *R/get_png_logos.R
+ef8a98a4dbbf04bbdd4b82660d7fef09 *R/get_reference_players_mlb.R
 1b57032ab44f7600f300b32a9aae4f75 *R/get_reference_team_mlb.R
-8848a7187a9fcdcbdcf3aeb3152dfec1 *R/mlb_player_full.R
+9c923c2ef9debda3de63e0753e0130f6 *R/mlb_player_full.R
 27f23a6fa3b20103e6aabded015d92bd *R/mlb_team_stats.R
 40012827315e459763a6dd53eb25f305 *build/vignette.rds
 bc2c293862298a47fe9cea714f547115 *inst/doc/mlbstatsR.R
 0a35e1a15896f5a03f0157be3c2a499c *inst/doc/mlbstatsR.Rmd
-3b6e83069f1173474a2fe296cf5805c1 *inst/doc/mlbstatsR.html
+2d72df44c00d7734b5ec6789e74ffb13 *inst/doc/mlbstatsR.html
 131f0b1c5a3cba7bbdaad7aab43d2ccf *man/espn_player_stats.Rd
 56b5be26d433bb878854ea6d267f8780 *man/espn_team_stats.Rd
 ee148756ca34bc7d8988f17d67028826 *man/get_mlb_bateo.Rd

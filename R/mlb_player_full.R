@@ -93,4 +93,4 @@ mlb_player_full <- function(year = year_actual, stats= "hitting", season_type = 
 
 }
 
-mlb_player_full(1990, "hitting", "playoffs")
+

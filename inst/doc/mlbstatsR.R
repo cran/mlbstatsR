@@ -36,6 +36,11 @@ get_reference_team_mlb(1980,"fielding", "centerfield")
 
 ## ----echo=FALSE---------------------------------------------------------------
 library(mlbstatsR)
+get_reference_team_standings(1999)
+
+
+## ----echo=FALSE---------------------------------------------------------------
+library(mlbstatsR)
  espn_player_stats(2015, "pitching", "regular")
 
 ## ----echo=FALSE---------------------------------------------------------------

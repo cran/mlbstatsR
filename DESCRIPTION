@@ -2,7 +2,7 @@ Package: mlbstatsR
 Type: Package
 Title: Stats, Photos, Logos, and Colors of M.L.B. (Major League
         Baseball)
-Version: 0.1.0.1
+Version: 0.1.0.2
 Author: Ivan Villanueva
 Maintainer: Ivan Villanueva <ivan.v23@yahoo.com>
 Description: Main use case is to gives users the ability to work with Major League Baseball data in a clean and detailed way.
@@ -18,6 +18,6 @@ Suggests: tidyverse, knitr, rmarkdown, testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2021-06-13 18:05:49 UTC; ivo
+Packaged: 2021-09-05 20:50:19 UTC; ivo
 Repository: CRAN
-Date/Publication: 2021-06-14 08:10:07 UTC
+Date/Publication: 2021-09-05 21:10:02 UTC

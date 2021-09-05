@@ -155,6 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>mlb_team_stats()</p></li>
 <li><p>get_reference_players_mlb()</p></li>
 <li><p>get_reference_team_mlb()</p></li>
+<li><p>get_reference_team_standings()</p></li>
 <li><p>espn_player_stats()</p></li>
 <li><p>espn_team_stats()</p></li>
 <li><p>mlb_player_full()</p></li>
@@ -170,20 +171,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>#&gt; LOADING 1945 batting value from the index:
 #&gt; &#39;advanced&#39;, &#39;value&#39;, &#39;probability&#39;, &#39;ratio&#39;, &#39;baserunning&#39;, &#39;standard&#39;
 #&gt; &#39;pitchesbatting&#39;, &#39;neutralizedbatting&#39;,&#39;situational&#39;, &#39;baserunning&#39; o &#39;cumulative&#39;
-#&gt; # A tibble: 547 x 27
+#&gt; # A tibble: 865 × 27
 #&gt;     year stats stats_type rk    name  age   tm    g     pa    rbat  rbaser rdp  
 #&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;
-#&gt;  1  1945 batt… value      1     Ace … 35    NYG   65    20    -2    0      0    
-#&gt;  2  1945 batt… value      2     Bust… 30    2TM   154   707   15    0      1    
-#&gt;  3  1945 batt… value      3     Morr… 29    2TM   70    174   -1    -1     1    
-#&gt;  4  1945 batt… value      4     Nate… 31    BSN   22    53    -5    0      0    
-#&gt;  5  1945 batt… value      5     Stan… 28    2TM   34    89    -4    1      0    
-#&gt;  6  1945 batt… value      6     John… 29    2TM   127   540   -16   -2     -1   
-#&gt;  7  1945 batt… value      7     Pete… 41    2TM   8     5     0     0      0    
-#&gt;  8  1945 batt… value      8     Luke… 38    CHW   18    70    7     0      0    
-#&gt;  9  1945 batt… value      9     Joe … 22    PHA   10    18    -3    0      0    
-#&gt; 10  1945 batt… value      10    Jim … 28    CLE   25    61    -1    0      0    
-#&gt; # … with 537 more rows, and 15 more variables: rfield &lt;chr&gt;, rpos &lt;chr&gt;,
+#&gt;  1  1945 batt… value      1     Jame… 26    KCM   2     6     1     0      0    
+#&gt;  2  1945 batt… value      2     Ace … 35    NYG   65    20    -2    0      0    
+#&gt;  3  1945 batt… value      3     Bust… 30    2TM   154   707   15    0      1    
+#&gt;  4  1945 batt… value      4     Emer… 34    NBY   19    56    0     0      0    
+#&gt;  5  1945 batt… value      5     Morr… 29    2TM   70    174   -1    -1     1    
+#&gt;  6  1945 batt… value      6     Bill… 32    NYC   8     10    -2    0      0    
+#&gt;  7  1945 batt… value      7     Nate… 31    BSN   22    53    -5    0      0    
+#&gt;  8  1945 batt… value      8     Stan… 28    2TM   34    89    -4    1      0    
+#&gt;  9  1945 batt… value      9     John… 29    2TM   127   540   -16   -2     -1   
+#&gt; 10  1945 batt… value      10    Pete… 41    2TM   8     5     0     0      0    
+#&gt; # … with 855 more rows, and 15 more variables: rfield &lt;chr&gt;, rpos &lt;chr&gt;,
 #&gt; #   raa &lt;chr&gt;, waa &lt;chr&gt;, rrep &lt;chr&gt;, rar &lt;chr&gt;, war &lt;chr&gt;,
 #&gt; #   waa_wl_percent &lt;chr&gt;, x162wl_percent &lt;chr&gt;, o_war &lt;chr&gt;, d_war &lt;chr&gt;,
 #&gt; #   o_rar &lt;chr&gt;, salary &lt;chr&gt;, acquired &lt;chr&gt;, pos_summary &lt;chr&gt;</code></pre>
@@ -192,19 +193,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>#&gt; LOADING 1965 pitching ratio from the index:
 #&gt; &#39;advanced&#39;, &#39;value&#39;, &#39;probability&#39;, &#39;ratio&#39;, &#39;battingagainst&#39;, &#39;startingpitching&#39;,
 #&gt; &#39;standard&#39;, &#39;reliefpitching&#39;, &#39;neutralizedpitching&#39;, &#39;baserunning&#39; o &#39;cumulative&#39;
-#&gt; # A tibble: 341 x 25
-#&gt;     year stats  stats_type rk    name   age   tm    ip    ptn_percent hr_percent
-#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;     
-#&gt;  1  1965 pitch… ratio      1     Ted A… 32    CHC   136.1 57%         1.2%      
-#&gt;  2  1965 pitch… ratio      2     Hank … 34    DET   208.1 19%         2.7%      
-#&gt;  3  1965 pitch… ratio      3     Jack … 24    KCA   51.1  59%         1.4%      
-#&gt;  4  1965 pitch… ratio      4     Matty… 26    SFG   2.0   30%         0.0%      
-#&gt;  5  1965 pitch… ratio      5     Don A… 22    HOU   6.0   35%         0.0%      
-#&gt;  6  1965 pitch… ratio      6     Gerry… 24    CIN   54.0  27%         1.5%      
-#&gt;  7  1965 pitch… ratio      7     Denni… 24    STL   7.1   58%         0.0%      
-#&gt;  8  1965 pitch… ratio      8     Jack … 28    PHI   99.0  61%         0.9%      
-#&gt;  9  1965 pitch… ratio      9     Steve… 27    BAL   220.2 20%         1.8%      
-#&gt; 10  1965 pitch… ratio      10    Ed Ba… 21    BAL   4.1   82%         0.0%      
+#&gt; # A tibble: 341 × 25
+#&gt;     year stats    stats_type rk    name  age   tm    ip    ptn_percent hr_percent
+#&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;     
+#&gt;  1  1965 pitching ratio      1     Ted … 32    CHC   136.1 57%         1.2%      
+#&gt;  2  1965 pitching ratio      2     Hank… 34    DET   208.1 19%         2.7%      
+#&gt;  3  1965 pitching ratio      3     Jack… 24    KCA   51.1  59%         1.4%      
+#&gt;  4  1965 pitching ratio      4     Matt… 26    SFG   2.0   30%         0.0%      
+#&gt;  5  1965 pitching ratio      5     Don … 22    HOU   6.0   35%         0.0%      
+#&gt;  6  1965 pitching ratio      6     Gerr… 24    CIN   54.0  27%         1.5%      
+#&gt;  7  1965 pitching ratio      7     Denn… 24    STL   7.1   58%         0.0%      
+#&gt;  8  1965 pitching ratio      8     Jack… 28    PHI   99.0  61%         0.9%      
+#&gt;  9  1965 pitching ratio      9     Stev… 27    BAL   220.2 20%         1.8%      
+#&gt; 10  1965 pitching ratio      10    Ed B… 21    BAL   4.1   82%         0.0%      
 #&gt; # … with 331 more rows, and 15 more variables: so_percent &lt;chr&gt;,
 #&gt; #   bb_percent &lt;chr&gt;, so_bb_percent &lt;chr&gt;, xbh_percent &lt;chr&gt;,
 #&gt; #   x_h_percent &lt;chr&gt;, gb_fb &lt;chr&gt;, go_ao &lt;chr&gt;, ip_percent &lt;chr&gt;,
@@ -215,19 +216,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>#&gt; LOADING 2002 fielding appearances from the index:
 #&gt; &#39;appearances&#39;, &#39;pitcher&#39;, &#39;catcher&#39;, &#39;firstbase&#39;, &#39;secondbase&#39;, &#39;thirdbase&#39;,
 #&gt; &#39;shortstop&#39;, &#39;leftfield&#39;, &#39;centerfield&#39;, &#39;rightfield&#39;, &#39;outfield&#39;
-#&gt; # A tibble: 1,218 x 25
-#&gt;     year stats  stats_type  rk    name     age   tm    yrs   g     gs    batting
-#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  
-#&gt;  1  2002 field… appearances 1     Paul Ab… 34    SEA   9     7     5     0      
-#&gt;  2  2002 field… appearances 2     Brent A… 24    TBD   2     117   115   117    
-#&gt;  3  2002 field… appearances 3     Bobby A… 28    PHI   7     157   153   157    
-#&gt;  4  2002 field… appearances 4     Jose Ac… 24    CIN   2     6     5     6      
-#&gt;  5  2002 field… appearances 5     Juan Ac… 32    DET   7     65    0     4      
-#&gt;  6  2002 field… appearances 6     Terry A… 29    PHI   8     46    19    45     
-#&gt;  7  2002 field… appearances 7     Jeremy … 23    KCR   1st   34    7     0      
-#&gt;  8  2002 field… appearances 8     Benny A… 30    2TM   5     61    41    61     
-#&gt;  9  2002 field… appearances 9     Kurt Ai… 23    SFG   2     6     4     6      
-#&gt; 10  2002 field… appearances 10    Israel … 29    MIL   3     16    6     16     
+#&gt; # A tibble: 1,218 × 25
+#&gt;     year stats    stats_type  rk    name   age   tm    yrs   g     gs    batting
+#&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  
+#&gt;  1  2002 fielding appearances 1     Paul … 34    SEA   9     7     5     0      
+#&gt;  2  2002 fielding appearances 2     Brent… 24    TBD   2     117   115   117    
+#&gt;  3  2002 fielding appearances 3     Bobby… 28    PHI   7     157   153   157    
+#&gt;  4  2002 fielding appearances 4     Jose … 24    CIN   2     6     5     6      
+#&gt;  5  2002 fielding appearances 5     Juan … 32    DET   7     65    0     4      
+#&gt;  6  2002 fielding appearances 6     Terry… 29    PHI   8     46    19    45     
+#&gt;  7  2002 fielding appearances 7     Jerem… 23    KCR   1st   34    7     0      
+#&gt;  8  2002 fielding appearances 8     Benny… 30    2TM   5     61    41    61     
+#&gt;  9  2002 fielding appearances 9     Kurt … 23    SFG   2     6     4     6      
+#&gt; 10  2002 fielding appearances 10    Israe… 29    MIL   3     16    6     16     
 #&gt; # … with 1,208 more rows, and 14 more variables: defense &lt;chr&gt;, p &lt;chr&gt;,
 #&gt; #   c &lt;chr&gt;, x1b &lt;chr&gt;, x2b &lt;chr&gt;, x3b &lt;chr&gt;, ss &lt;chr&gt;, lf &lt;chr&gt;, cf &lt;chr&gt;,
 #&gt; #   rf &lt;chr&gt;, of &lt;chr&gt;, dh &lt;chr&gt;, ph &lt;chr&gt;, pr &lt;chr&gt;</code></pre>
@@ -240,41 +241,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>#&gt; LOADING 2021 batting advanced from the index:
 #&gt; &#39;advanced&#39;, &#39;value&#39;, &#39;probability&#39;, &#39;ratio&#39;, &#39;baserunning&#39;,
 #&gt; &#39;standard&#39;, &#39;pitchesbatting&#39;, &#39;situational&#39; o &#39;baserunning&#39;
-#&gt; # A tibble: 33 x 26
-#&gt;     year stats stats_type tm    r_g   outs  rc    rc_g  air   b_abip ba    lg_ba
-#&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;
-#&gt;  1  2021 batt… advanced   ARI   4.23  1772  279   4.1   99    .287   .232  .244 
-#&gt;  2  2021 batt… advanced   ATL   4.76  1635  298   4.8   105   .283   .235  .252 
-#&gt;  3  2021 batt… advanced   BAL   4.08  1657  262   4.2   96    .289   .239  .243 
-#&gt;  4  2021 batt… advanced   BOS   4.97  1698  312   4.8   99    .309   .255  .246 
-#&gt;  5  2021 batt… advanced   CHC   4.66  1692  292   4.5   93    .285   .235  .237 
-#&gt;  6  2021 batt… advanced   CHW   5.06  1632  308   5.0   94    .315   .254  .240 
-#&gt;  7  2021 batt… advanced   CIN   5.05  1669  312   4.9   108   .293   .250  .256 
-#&gt;  8  2021 batt… advanced   CLE   4.18  1607  242   4.0   99    .267   .226  .246 
-#&gt;  9  2021 batt… advanced   COL   4.26  1689  272   4.2   106   .300   .242  .254 
-#&gt; 10  2021 batt… advanced   DET   3.78  1692  244   3.8   94    .292   .226  .240 
-#&gt; # … with 23 more rows, and 14 more variables: obp &lt;chr&gt;, lg_obp &lt;chr&gt;,
-#&gt; #   slg &lt;chr&gt;, lg_slg &lt;chr&gt;, ops &lt;chr&gt;, lg_ops &lt;chr&gt;, ops_2 &lt;chr&gt;,
-#&gt; #   o_wn_percent &lt;chr&gt;, bt_runs &lt;chr&gt;, bt_wins &lt;chr&gt;, tot_a &lt;chr&gt;, sec_a &lt;chr&gt;,
-#&gt; #   iso &lt;chr&gt;, pwr_spd &lt;chr&gt;</code></pre>
+#&gt; # A tibble: 34 × 26
+#&gt;     year stats   stats_type x              batting batting_2 batting_3 batting_4
+#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    
+#&gt;  1  2021 batting advanced   Tm             rOBA    Rbat+     BAbip     ISO      
+#&gt;  2  2021 batting advanced   Arizona Diamo… .310    87        .296      .146     
+#&gt;  3  2021 batting advanced   Atlanta Braves .329    93        .284      .189     
+#&gt;  4  2021 batting advanced   Baltimore Ori… .308    88        .289      .163     
+#&gt;  5  2021 batting advanced   Boston Red Sox .334    102       .307      .186     
+#&gt;  6  2021 batting advanced   Chicago Cubs   .315    89        .290      .169     
+#&gt;  7  2021 batting advanced   Chicago White… .336    112       .307      .169     
+#&gt;  8  2021 batting advanced   Cincinnati Re… .336    94        .301      .183     
+#&gt;  9  2021 batting advanced   Cleveland Ind… .316    92        .279      .174     
+#&gt; 10  2021 batting advanced   Colorado Rock… .323    82        .296      .165     
+#&gt; # … with 24 more rows, and 18 more variables: batting_ratios &lt;chr&gt;,
+#&gt; #   batting_ratios_2 &lt;chr&gt;, batting_ratios_3 &lt;chr&gt;, batted_ball &lt;chr&gt;,
+#&gt; #   batted_ball_2 &lt;chr&gt;, batted_ball_3 &lt;chr&gt;, batted_ball_4 &lt;chr&gt;,
+#&gt; #   batted_ball_5 &lt;chr&gt;, batted_ball_6 &lt;chr&gt;, batted_ball_7 &lt;chr&gt;,
+#&gt; #   batted_ball_8 &lt;chr&gt;, batted_ball_9 &lt;chr&gt;, win_probability &lt;chr&gt;,
+#&gt; #   win_probability_2 &lt;chr&gt;, win_probability_3 &lt;chr&gt;, baserunning &lt;chr&gt;,
+#&gt; #   baserunning_2 &lt;chr&gt;, baserunning_3 &lt;chr&gt;</code></pre>
 <p>En <strong><em>Pitching</em></strong> podemos seleccionar <strong><em>standard, batting, value, probability, ratio, battingagainst, startingpitching, reliefpitching, basesituation.</em></strong> Como por ejemplo:</p>
 <p><strong><em>get_reference_team_mlb(1980, “pitching”, “battingagainst”)</em></strong></p>
 <pre><code>#&gt; LOADING 1980 pitching battingagainst from the index:
 #&gt; &#39;batting&#39;, &#39;value&#39;, &#39;probability&#39;, &#39;ratio&#39;, &#39;battingagainst&#39;, &#39;startingpitching&#39;,
 #&gt; &#39;reliefpitching&#39;,  &#39;basesituation&#39;, &#39;standard&#39;
-#&gt; # A tibble: 29 x 30
+#&gt; # A tibble: 29 × 30
 #&gt;     year stats  stats_type tm    ra_g  p_au  g     pa    ab    r     h     x2b  
 #&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
-#&gt;  1  1980 pitch… batting    ATL   4.10  &quot;&quot;    161   6028  5423  660   1397  232  
-#&gt;  2  1980 pitch… batting    BAL   3.95  &quot;&quot;    162   6131  5510  640   1438  241  
-#&gt;  3  1980 pitch… batting    BOS   4.79  &quot;&quot;    160   6192  5571  767   1557  287  
-#&gt;  4  1980 pitch… batting    CAL   4.98  &quot;&quot;    160   6256  5563  797   1548  271  
-#&gt;  5  1980 pitch… batting    CHC   4.49  &quot;&quot;    162   6402  5613  728   1525  263  
-#&gt;  6  1980 pitch… batting    CHW   4.46  &quot;&quot;    162   6199  5448  722   1434  217  
-#&gt;  7  1980 pitch… batting    CIN   4.11  &quot;&quot;    163   6143  5511  670   1404  246  
-#&gt;  8  1980 pitch… batting    CLE   5.04  &quot;&quot;    160   6221  5531  807   1519  230  
-#&gt;  9  1980 pitch… batting    DET   4.64  &quot;&quot;    163   6335  5630  757   1505  252  
-#&gt; 10  1980 pitch… batting    HOU   3.61  &quot;&quot;    163   6160  5562  589   1367  203  
+#&gt;  1  1980 pitch… batting    Atla… 4.10  &quot;&quot;    161   6028  5423  660   1397  232  
+#&gt;  2  1980 pitch… batting    Balt… 3.95  &quot;&quot;    162   6131  5510  640   1438  241  
+#&gt;  3  1980 pitch… batting    Bost… 4.79  &quot;&quot;    160   6192  5571  767   1557  287  
+#&gt;  4  1980 pitch… batting    Cali… 4.98  &quot;&quot;    160   6256  5563  797   1548  271  
+#&gt;  5  1980 pitch… batting    Chic… 4.49  &quot;&quot;    162   6402  5613  728   1525  263  
+#&gt;  6  1980 pitch… batting    Chic… 4.46  &quot;&quot;    162   6199  5448  722   1434  217  
+#&gt;  7  1980 pitch… batting    Cinc… 4.11  &quot;&quot;    163   6143  5511  670   1404  246  
+#&gt;  8  1980 pitch… batting    Clev… 5.04  &quot;&quot;    160   6221  5531  807   1519  230  
+#&gt;  9  1980 pitch… batting    Detr… 4.64  &quot;&quot;    163   6335  5630  757   1505  252  
+#&gt; 10  1980 pitch… batting    Hous… 3.61  &quot;&quot;    163   6160  5562  589   1367  203  
 #&gt; # … with 19 more rows, and 18 more variables: x3b &lt;chr&gt;, hr &lt;chr&gt;, sb &lt;chr&gt;,
 #&gt; #   cs &lt;chr&gt;, bb &lt;chr&gt;, so &lt;chr&gt;, ba &lt;chr&gt;, obp &lt;chr&gt;, slg &lt;chr&gt;, ops &lt;chr&gt;,
 #&gt; #   b_abip &lt;chr&gt;, tb &lt;chr&gt;, gdp &lt;chr&gt;, hbp &lt;chr&gt;, sh &lt;chr&gt;, sf &lt;chr&gt;,
@@ -284,22 +288,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>#&gt; LOADING 1980 fielding centerfield from the index:
 #&gt; &#39;appearances&#39;, &#39;pitcher&#39;, &#39;catcher&#39;, &#39;firstbase&#39;, &#39;secondbase&#39;, &#39;thirdbase&#39;,
 #&gt;          &#39;shortstop&#39;, &#39;leftfield&#39;, &#39;centerfield&#39;, &#39;rightfield&#39;, &#39;outfield&#39;
-#&gt; # A tibble: 29 x 20
-#&gt;     year stats  stats_type  tm    number_fld ra_g  g     gs    cg    inn   ch   
-#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
-#&gt;  1  1980 field… specialpos… ATL   5          4.10  161   161   150   1428… 412  
-#&gt;  2  1980 field… specialpos… BAL   2          3.95  162   162   154   1460… 524  
-#&gt;  3  1980 field… specialpos… BOS   7          4.79  160   160   146   1441… 457  
-#&gt;  4  1980 field… specialpos… CAL   4          4.98  160   160   134   1428… 504  
-#&gt;  5  1980 field… specialpos… CHC   6          4.49  162   162   129   1479… 424  
-#&gt;  6  1980 field… specialpos… CHW   5          4.46  162   162   149   1435… 450  
-#&gt;  7  1980 field… specialpos… CIN   6          4.11  163   163   74    1459… 474  
-#&gt;  8  1980 field… specialpos… CLE   6          5.04  160   160   143   1428… 466  
-#&gt;  9  1980 field… specialpos… DET   5          4.64  163   163   139   1467… 483  
-#&gt; 10  1980 field… specialpos… HOU   5          3.61  163   163   148   1482… 446  
+#&gt; # A tibble: 29 × 20
+#&gt;     year stats  stats_type tm     number_fld ra_g  g     gs    cg    inn   ch   
+#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+#&gt;  1  1980 field… specialpo… Atlan… 5          4.10  161   161   150   1428… 412  
+#&gt;  2  1980 field… specialpo… Balti… 2          3.95  162   162   154   1460… 524  
+#&gt;  3  1980 field… specialpo… Bosto… 7          4.79  160   160   146   1441… 457  
+#&gt;  4  1980 field… specialpo… Calif… 4          4.98  160   160   134   1428… 504  
+#&gt;  5  1980 field… specialpo… Chica… 6          4.49  162   162   129   1479… 424  
+#&gt;  6  1980 field… specialpo… Chica… 5          4.46  162   162   149   1435… 450  
+#&gt;  7  1980 field… specialpo… Cinci… 6          4.11  163   163   74    1459… 474  
+#&gt;  8  1980 field… specialpo… Cleve… 6          5.04  160   160   143   1428… 466  
+#&gt;  9  1980 field… specialpo… Detro… 5          4.64  163   163   139   1467… 483  
+#&gt; 10  1980 field… specialpo… Houst… 5          3.61  163   163   148   1482… 446  
 #&gt; # … with 19 more rows, and 9 more variables: po &lt;chr&gt;, a &lt;chr&gt;, e &lt;chr&gt;,
 #&gt; #   dp &lt;chr&gt;, fld_percent &lt;chr&gt;, rtot &lt;chr&gt;, rtot_yr &lt;chr&gt;, rtz &lt;chr&gt;,
 #&gt; #   rof &lt;chr&gt;</code></pre>
+</div>
+<div id="get_reference_team_standings" class="section level3">
+<h3>get_reference_team_standings()</h3>
+<p>Nos devuelve la clasificación de todas las maneras posibles y proyecciones de victorias</p>
+<pre><code>#&gt; # A tibble: 31 × 25
+#&gt;     year    rk tm              w     l w_l_percent     r    ra rdiff   sos   srs
+#&gt;    &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;       &lt;int&gt; &lt;int&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1  1999     1 Atlanta Br…   103    59       0.636   5.2   4.1   1.1   0.1   1.2
+#&gt;  2  1999     2 Arizona Di…   100    62       0.617   5.6   4.2   1.4   0.1   1.5
+#&gt;  3  1999     3 New York Y…    98    64       0.605   5.6   4.5   1    -0.3   0.8
+#&gt;  4  1999     4 Houston As…    97    65       0.599   5.1   4.2   0.9   0.1   1  
+#&gt;  5  1999     5 Cleveland …    97    65       0.599   6.2   5.3   0.9  -0.3   0.6
+#&gt;  6  1999     6 New York M…    97    66       0.595   5.2   4.4   0.9   0.2   1  
+#&gt;  7  1999     7 Cincinnati…    96    67       0.589   5.3   4.4   0.9   0.1   1.1
+#&gt;  8  1999     8 Texas Rang…    95    67       0.586   5.8   5.3   0.5  -0.2   0.3
+#&gt;  9  1999     9 Boston Red…    94    68       0.58    5.2   4.4   0.7  -0.2   0.5
+#&gt; 10  1999    10 Oakland At…    87    75       0.537   5.5   5.2   0.3  -0.2   0.1
+#&gt; # … with 21 more rows, and 14 more variables: pyth_wl &lt;chr&gt;, luck &lt;int&gt;,
+#&gt; #   v_east &lt;chr&gt;, v_cent &lt;chr&gt;, v_west &lt;chr&gt;, inter &lt;chr&gt;, home &lt;chr&gt;,
+#&gt; #   road &lt;chr&gt;, ex_inn &lt;chr&gt;, x1run &lt;chr&gt;, v_rhp &lt;chr&gt;, v_lhp &lt;chr&gt;,
+#&gt; #   x500 &lt;chr&gt;, x500_2 &lt;chr&gt;</code></pre>
 </div>
 <div id="espn_player_stats" class="section level3">
 <h3>espn_player_stats()</h3>
@@ -308,19 +333,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4>Regular</h4>
 <p><strong><em>espn_player_stats(2015, “pitching”, “regular”)</em></strong></p>
 <pre><code>#&gt; Getting pitching stats de la regular season del 2015!
-#&gt; # A tibble: 78 x 23
-#&gt;     year season_type  rank name           team  pos   games_played games_started
-#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;         &lt;int&gt;
-#&gt;  1  2015 regular         1 Zack Greinke   LAD   SP              32            32
-#&gt;  2  2015 regular         2 Jake Arrieta   CHC   SP              33            33
-#&gt;  3  2015 regular         3 Clayton Kersh… LAD   SP              33            33
-#&gt;  4  2015 regular         4 David Price    DET   SP              32            32
-#&gt;  5  2015 regular         5 Dallas Keuchel HOU   SP              33            33
-#&gt;  6  2015 regular         6 Jacob deGrom   NYM   SP              30            30
-#&gt;  7  2015 regular         7 Gerrit Cole    PIT   SP              32            32
-#&gt;  8  2015 regular         8 Matt Harvey    NYM   SP              29            29
-#&gt;  9  2015 regular         9 Sonny Gray     OAK   SP              31            31
-#&gt; 10  2015 regular        10 John Lackey    STL   SP              33            33
+#&gt; # A tibble: 78 × 23
+#&gt;     year season_type  rank name            team  pos   games_played games_started
+#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;         &lt;int&gt;
+#&gt;  1  2015 regular         1 Zack Greinke    LAD   SP              32            32
+#&gt;  2  2015 regular         2 Jake Arrieta    CHC   SP              33            33
+#&gt;  3  2015 regular         3 Clayton Kershaw LAD   SP              33            33
+#&gt;  4  2015 regular         4 David Price     DET   SP              32            32
+#&gt;  5  2015 regular         5 Dallas Keuchel  HOU   SP              33            33
+#&gt;  6  2015 regular         6 Jacob deGrom    NYM   SP              30            30
+#&gt;  7  2015 regular         7 Gerrit Cole     PIT   SP              32            32
+#&gt;  8  2015 regular         8 Matt Harvey     NYM   SP              29            29
+#&gt;  9  2015 regular         9 Sonny Gray      OAK   SP              31            31
+#&gt; 10  2015 regular        10 John Lackey     STL   SP              33            33
 #&gt; # … with 68 more rows, and 15 more variables: quality_starts &lt;int&gt;,
 #&gt; #   earned_run_avg &lt;dbl&gt;, wins &lt;int&gt;, losses &lt;int&gt;, saves &lt;int&gt;, holds &lt;int&gt;,
 #&gt; #   innings_pitched &lt;dbl&gt;, hits &lt;int&gt;, earned_runs &lt;int&gt;, home_runs &lt;int&gt;,
@@ -330,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4>Playoffs</h4>
 <p><strong><em>espn_player_stats(2004, “batting”, “playoffs”)</em></strong></p>
 <pre><code>#&gt; Getting batting stats de los playoffs del 2004!
-#&gt; # A tibble: 61 x 23
+#&gt; # A tibble: 61 × 23
 #&gt;     year season_type  rank name     team  pos   games_played at_bats  runs  hits
 #&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;
 #&gt;  1  2004 playoffs        1 Andruw … ATL   LF               5      19     4    10
@@ -356,29 +381,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4>Regular</h4>
 <p><strong><em>espn_team_stats(2021, “fielding”, “regular”)</em></strong></p>
 <pre><code>#&gt; Getting fielding stats de la regular season del 2021!
-#&gt; # A tibble: 30 x 10
+#&gt; # A tibble: 30 × 10
 #&gt;     year season_type  rank team   g_played errors fielding_percen… total_chances
 #&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt; &lt;chr&gt;        
-#&gt;  1  2021 regular         1 Tampa…       65     25            0.99  2,390        
-#&gt;  2  2021 regular         2 Houst…       64     24            0.989 2,281        
-#&gt;  3  2021 regular         3 San F…       64     25            0.989 2,309        
-#&gt;  4  2021 regular         4 Balti…       63     30            0.986 2,159        
-#&gt;  5  2021 regular         5 Chica…       64     33            0.986 2,289        
-#&gt;  6  2021 regular         6 Oakla…       66     34            0.985 2,287        
-#&gt;  7  2021 regular         7 Texas…       65     36            0.985 2,361        
-#&gt;  8  2021 regular         8 Pitts…       63     31            0.984 1,994        
-#&gt;  9  2021 regular         9 New Y…       56     30            0.984 1,907        
-#&gt; 10  2021 regular        10 Washi…       61     33            0.984 2,068        
-#&gt; # … with 20 more rows, and 2 more variables: putouts &lt;chr&gt;, assists &lt;int&gt;</code></pre>
+#&gt;  1  2021 regular         1 Houst…      135     53            0.989 4,824        
+#&gt;  2  2021 regular         2 Oakla…      136     55            0.988 4,522        
+#&gt;  3  2021 regular         3 Atlan…      135     55            0.987 4,393        
+#&gt;  4  2021 regular         4 Balti…      134     51            0.987 3,996        
+#&gt;  5  2021 regular         5 Color…      136     64            0.987 4,815        
+#&gt;  6  2021 regular         6 Seatt…      136     65            0.987 4,816        
+#&gt;  7  2021 regular         7 San F…      136     66            0.986 4,862        
+#&gt;  8  2021 regular         8 Pitts…      136     54            0.986 3,861        
+#&gt;  9  2021 regular         9 San D…      136     69            0.986 4,888        
+#&gt; 10  2021 regular        10 Tampa…      136     69            0.986 4,873        
+#&gt; # … with 20 more rows, and 2 more variables: putouts &lt;chr&gt;, assists &lt;chr&gt;</code></pre>
 </div>
 <div id="playoffs-1" class="section level4">
 <h4>Playoffs</h4>
 <p><strong><em>espn_team_stats(2011, “fielding”, “playoffs”)</em></strong></p>
 <pre><code>#&gt; Getting fielding stats de los playoffs del 2011!
-#&gt; # A tibble: 8 x 10
+#&gt; # A tibble: 8 × 10
 #&gt;    year season_type  rank team    g_played errors fielding_percen… total_chances
 #&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;      &lt;int&gt;  &lt;int&gt;            &lt;dbl&gt;         &lt;int&gt;
-#&gt; 1  2011 playoffs        1 Tampa …        4      0            0               143
+#&gt; 1  2011 playoffs        1 Tampa …        4      0            1               143
 #&gt; 2  2011 playoffs        2 New Yo…        5      1            0.995           194
 #&gt; 3  2011 playoffs        3 Arizon…        5      1            0.994           164
 #&gt; 4  2011 playoffs        4 Detroi…       11      5            0.988           401

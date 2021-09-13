@@ -7,7 +7,7 @@
 get_png_logos()
 }
 \value{
-Logos and colors
+Logos and colors from ESPN
 }
 \description{
 MLB Profesional league baseball data table , logos and colors
@@ -15,6 +15,6 @@ MLB Profesional league baseball data table , logos and colors
 \examples{
 
 
-\donttest{get_png_logos()}
 
+\donttest{get_png_logos()}
 }

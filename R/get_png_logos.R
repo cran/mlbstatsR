@@ -1,43 +1,41 @@
 #' @title  4 png Logos & colors for MLB (baseball)
-#'
 #' @description MLB Profesional league baseball data table , logos and colors
-#'
-#' @return Logos and colors
+#' @return Logos and colors from ESPN
 #' @export
-#' @importFrom jsonlite fromJSON
+#' @importFrom httr content GET
 #' @import dplyr purrr
-#' @importFrom utils sessionInfo
-#' @importFrom janitor clean_names
 #' @examples
 #'
 #'
-#' \donttest{get_png_logos()}
 #'
+#' \donttest{get_png_logos()}
+
   get_png_logos <- function() {
    message("4 MLB ESPN logos in png!")
-   team_url <- "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams?&limit=50"
-   raw_teams <- jsonlite::read_json(team_url)
-   raw_teams$sports[[1]]$leagues[[1]]$teams %>%
-   tibble::enframe() %>%
-   dplyr::select(-"name") %>%
-   tidyr::unnest_wider("value") %>%
-   tidyr::unnest_wider("team") %>%
-   dplyr::select(-"record", -"links") %>%
-   dplyr::as_tibble()  %>%
-   dplyr::mutate("logoDefault" = purrr::map_chr(.data$logos, function(df) df[[1]][[1]]),
-                 "logoDark" = purrr::map_chr(.data$logos, function(df) df[[2]][[1]]),
-                 "logoScoreboard" = purrr::map_chr(.data$logos, function(df) df[[3]][[1]]),
-                 "logoDarkScoreboard" = purrr::map_chr(.data$logos, function(df) df[[4]][[1]])) %>%
-    dplyr::select("id", "name":"alternateColor",-"shortDisplayName", "logoDefault":"logoDarkScoreboard") %>%
-    purrr::set_names(
-      nm = c(
-        "uid", "team_name", "team_nickname", "full_name", "team_color",
-        "alternate_color", "logologodefault", "logodark", "logoscoreboard", "logodarkscoreboard"
-      )) %>%
-    dplyr::mutate(
-      "team_color" = paste0("#", .data$team_color),
-      "alternate_color" = paste0("#", .data$alternate_color)
-
+    team_url <- "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams"
+    raw_teams <- httr::GET(team_url, query = list(limit = "50")) %>%
+      httr::content()
+    purrr::pluck(raw_teams, "sports", 1, "leagues", 1, "teams")%>%
+      dplyr::tibble(value = .data$.) %>%
+      tidyr::unnest_wider(.data$value) %>%
+      tidyr::unnest_wider(.data$team) %>% tidyr::hoist(
+        .data$logos,
+        logo = list(1, "href"),
+        logodark = list(2, "href"),
+        logoscore = list(3, "href"),
+        logoscoredark = list(4, "href")
+      ) %>%
+      dplyr::select(id, "name":"alternateColor", "logo":"logoscoredark", -"shortDisplayName") %>%
+      purrr::set_names(
+        nm = c(
+          "tm_id", "tm_name", "tm_abb", "tm", "primary",
+          "secondary", "logo", "logodark", "logoscore", "logoscoredark"
+        )
+      ) %>%
+      dplyr::mutate(
+        "primary" = paste0("#", .data$primary),
+        "secondary" = paste0("#", .data$secondary)
       )
+
 
   }
